@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: reactor
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:file:./data/reactordb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver

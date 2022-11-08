@@ -1,4 +1,4 @@
-package com.urartusoftware.reactor.DAOs;
+package com.urartusoftware.reactor.daos;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -18,7 +18,7 @@ public class NoteDAO {
     private String content;
 
     @Column
-    private Timestamp noteTmiestamp;
+    private Timestamp tmiestamp;
 
     @ManyToOne
     @JoinColumn
@@ -28,7 +28,7 @@ public class NoteDAO {
     public NoteDAO() {
     }
 
-    public NoteDAO(int noteId, String title, String content, Timestamp noteTmiestamp, UserDAO userId) {
+    public NoteDAO(int noteId, String title, String content, Timestamp tmiestamp, UserDAO userId) {
         this.title = title;
         this.content = content;
         this.userId = userId;
@@ -41,7 +41,7 @@ public class NoteDAO {
                 "noteId=" + noteId +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", noteTmiestamp=" + noteTmiestamp +
+                ", noteTmiestamp=" + tmiestamp +
                 ", userId=" + userId +
                 '}';
     }
@@ -72,12 +72,12 @@ public class NoteDAO {
         this.content = content;
     }
 
-    public Timestamp getNoteTmiestamp() {
-        return noteTmiestamp;
+    public Timestamp getTmiestamp() {
+        return tmiestamp;
     }
 
-    public void setNoteTmiestamp(Timestamp noteTmiestamp) {
-        this.noteTmiestamp = noteTmiestamp;
+    public void setTmiestamp(Timestamp tmiestamp) {
+        this.tmiestamp = tmiestamp;
     }
 
     public UserDAO getUserId() {

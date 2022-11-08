@@ -1,4 +1,4 @@
-package com.urartusoftware.reactor.DAOs;
+package com.urartusoftware.reactor.daos;
 
 import javax.persistence.*;
 
