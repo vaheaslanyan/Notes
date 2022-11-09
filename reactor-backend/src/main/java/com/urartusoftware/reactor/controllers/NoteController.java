@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/note")
+@CrossOrigin
 public class NoteController {
 
     NoteService noteService;
@@ -24,8 +25,8 @@ public class NoteController {
         this.noteService = noteService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Note>> findAllByUserId(@RequestBody UserDAO userId) {
+    @GetMapping(value = "{userId}")
+    public ResponseEntity<List<Note>> findAllByUserId(@PathVariable int userId) {
         Optional<List<NoteDAO>> noteListOptional = noteService.getByUserId(userId);
 
         if (!noteListOptional.isPresent()) {

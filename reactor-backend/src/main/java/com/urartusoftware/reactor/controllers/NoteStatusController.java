@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/note-status")
+@CrossOrigin
 public class NoteStatusController {
 
     NoteStatusService noteStatusService;

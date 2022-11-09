@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import NewNote from "./NewNote";
 import Note from "./Note";
-import notesData from "../../notes-data";
+import NoteContext from "../context/NoteContext";
 
 function Notes() {
-  const [notes, setNotes] = useState(notesData);
+
+  const { note } = useContext(NoteContext);
+
+  const [notes, setNotes] = useState(note);
 
   function addNewNote(newNote) {
     setNotes((prevNotes) => {
