@@ -4,6 +4,7 @@ import com.urartusoftware.reactor.daos.NoteStatusDAO;
 import com.urartusoftware.reactor.models.NoteStatus;
 import com.urartusoftware.reactor.services.NoteStatusService;
 import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ public class NoteStatusController {
 
     NoteStatusService noteStatusService;
 
+    @Autowired
     public NoteStatusController(NoteStatusService noteStatusService) {
         this.noteStatusService = noteStatusService;
     }

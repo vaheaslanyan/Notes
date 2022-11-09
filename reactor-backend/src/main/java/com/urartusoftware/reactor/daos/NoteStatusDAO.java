@@ -1,9 +1,12 @@
 package com.urartusoftware.reactor.daos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name="note_statuses")
+@Table(name="note_status")
 public class NoteStatusDAO {
 
     @Id
@@ -13,8 +16,17 @@ public class NoteStatusDAO {
     @Column
     private String noteStatusName;
 
+    // Other tables referencing noteStatus
+    @JsonIgnore
+    @OneToMany(mappedBy = "noteStatusId")
+    private List<NoteDAO> notes;
+
     /* Constructors -------------------------------------------------------------------*/
     public NoteStatusDAO() {
+    }
+
+    public NoteStatusDAO(int noteStatusId) {
+        this.noteStatusId = noteStatusId;
     }
 
     public NoteStatusDAO(int noteStatusId, String noteStatusName) {

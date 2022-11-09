@@ -1,6 +1,9 @@
 package com.urartusoftware.reactor.daos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -22,10 +25,17 @@ public class UserDAO {
     @Column(nullable = false)
     private String lastName;
 
-    /* Constructors ------------------------------------------------------------*/
+    // Other tables referencing users
+    @JsonIgnore
+    @OneToMany(mappedBy = "userId")
+    private List<NoteDAO> notes;
 
+    /* Constructors ------------------------------------------------------------*/
     public UserDAO() {
-        super();
+    }
+
+    public UserDAO(int userId) {
+        this.userId = userId;
     }
 
     public UserDAO(String email, String password, String firstName, String lastName) {
@@ -37,7 +47,6 @@ public class UserDAO {
     }
 
     /* toString ----------------------------------------------------------------*/
-
     @Override
     public String toString() {
         return "User [userId=" + userId
@@ -49,7 +58,6 @@ public class UserDAO {
     }
 
     /* Getters & Setters -------------------------------------------------------*/
-
     public int getUserId() {
         return userId;
     }

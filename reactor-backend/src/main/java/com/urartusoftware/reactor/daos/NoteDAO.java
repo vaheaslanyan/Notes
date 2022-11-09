@@ -1,5 +1,7 @@
 package com.urartusoftware.reactor.daos;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -18,21 +20,29 @@ public class NoteDAO {
     private String content;
 
     @Column
-    private Timestamp tmiestamp;
+    private Timestamp timestamp;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "noteStatusId")
+    private NoteStatusDAO noteStatusId;
+
+    @ManyToOne
+    @JoinColumn(name = "userId")
     private UserDAO userId;
 
     /* Constructors ------------------------------------------------------------------*/
     public NoteDAO() {
     }
 
-    public NoteDAO(int noteId, String title, String content, Timestamp tmiestamp, UserDAO userId) {
+    @Autowired
+    public NoteDAO(String title, String content, NoteStatusDAO noteStatusId, UserDAO userId) {
         this.title = title;
         this.content = content;
+        this.noteStatusId = noteStatusId;
         this.userId = userId;
     }
+
+
 
     /* toString ----------------------------------------------------------------------*/
     @Override
@@ -41,13 +51,14 @@ public class NoteDAO {
                 "noteId=" + noteId +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", noteTmiestamp=" + tmiestamp +
+                ", tmiestamp=" + timestamp +
+                ", noteStatusId=" + noteStatusId +
                 ", userId=" + userId +
                 '}';
     }
 
-    /* Getters & Setters--------------------------------------------------------------*/
 
+    /* Getters & Setters--------------------------------------------------------------*/
     public int getNoteId() {
         return noteId;
     }
@@ -72,12 +83,20 @@ public class NoteDAO {
         this.content = content;
     }
 
-    public Timestamp getTmiestamp() {
-        return tmiestamp;
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
 
-    public void setTmiestamp(Timestamp tmiestamp) {
-        this.tmiestamp = tmiestamp;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public NoteStatusDAO getNoteStatusId() {
+        return noteStatusId;
+    }
+
+    public void setNoteStatusId(NoteStatusDAO noteStatusId) {
+        this.noteStatusId = noteStatusId;
     }
 
     public UserDAO getUserId() {

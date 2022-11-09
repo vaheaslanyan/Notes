@@ -20,7 +20,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(value="/{id}")
+    @GetMapping(value="/{userId}")
     public ResponseEntity<User> findUserById(@PathVariable int userId) {
 
         Optional<UserDAO> userOptional = userService.getById(userId);

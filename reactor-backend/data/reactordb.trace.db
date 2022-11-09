@@ -4,3 +4,6 @@ SELECT * FROM users [42104-214]
 2022-11-08 13:38:51 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
 SELECT * FROM users [42104-214]
+2022-11-09 09:45:15 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]USER_ID_USER_ID"; expected "UPDATE, USE"; SQL statement:
+USER_ID_USER_ID [42001-214]

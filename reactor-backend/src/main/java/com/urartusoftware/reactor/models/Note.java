@@ -1,5 +1,7 @@
 package com.urartusoftware.reactor.models;
 
+import com.urartusoftware.reactor.daos.NoteDAO;
+
 import java.sql.Timestamp;
 
 public class Note {
@@ -8,18 +10,18 @@ public class Note {
     private String title;
     private String content;
     private Timestamp timestamp;
-    private int userId;
+
+    private NoteStatus noteStatusId;
+    private User userId;
 
     /* Constructors -----------------------------------------*/
-    public Note() {
-    }
-
-    public Note(int noteId, String title, String content, Timestamp timestamp, int userId) {
-        this.noteId = noteId;
-        this.title = title;
-        this.content = content;
-        this.timestamp = timestamp;
-        this.userId = userId;
+    public Note(NoteDAO noteDAO) {
+        this.noteId = noteDAO.getNoteId();
+        this.title = noteDAO.getTitle();
+        this.content = noteDAO.getContent();
+        this.timestamp = noteDAO.getTimestamp();
+        this.noteStatusId = new NoteStatus(noteDAO.getNoteStatusId());
+        this.userId = new User(noteDAO.getUserId());
     }
 
     /* toString ---------------------------------------------*/
@@ -67,11 +69,19 @@ public class Note {
         this.timestamp = timestamp;
     }
 
-    public int getUserId() {
+    public NoteStatus getNoteStatusId() {
+        return noteStatusId;
+    }
+
+    public void setNoteStatusId(NoteStatus noteStatusId) {
+        this.noteStatusId = noteStatusId;
+    }
+
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 }
