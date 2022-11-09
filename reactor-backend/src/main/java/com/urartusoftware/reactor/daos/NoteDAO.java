@@ -1,5 +1,6 @@
 package com.urartusoftware.reactor.daos;
 
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class NoteDAO {
     private String content;
 
     @Column
+    @UpdateTimestamp
     private Timestamp timestamp;
 
     @ManyToOne
