@@ -25,7 +25,8 @@ public class NoteService {
         this.userRepo = userRepo;
     }
 
-    public Optional<List<NoteDAO>> getByUserId(int userId) {
+    public Optional<List<NoteDAO>> getByUserId(UserDAO userId) {
+//        return noteRepo.findByUserIdOrderByTimestampDesc(userId);
         return noteRepo.findByUserIdOrderByTimestampDesc(userId);
     }
 

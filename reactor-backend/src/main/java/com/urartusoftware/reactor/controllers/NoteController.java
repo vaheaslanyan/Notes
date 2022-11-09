@@ -1,6 +1,7 @@
 package com.urartusoftware.reactor.controllers;
 
 import com.urartusoftware.reactor.daos.NoteDAO;
+import com.urartusoftware.reactor.daos.UserDAO;
 import com.urartusoftware.reactor.models.Note;
 import com.urartusoftware.reactor.services.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class NoteController {
         this.noteService = noteService;
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<List<Note>> findAllByUserId(@PathVariable int userId) {
+    @GetMapping
+    public ResponseEntity<List<Note>> findAllByUserId(@RequestBody UserDAO userId) {
         Optional<List<NoteDAO>> noteListOptional = noteService.getByUserId(userId);
 
         if (!noteListOptional.isPresent()) {
