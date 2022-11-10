@@ -14,24 +14,22 @@ function Notes() {
   }
 
   function addNewNote(newNote) {
-    setNotes((prevNotes) => {
-      return [...notesData, newNote];
-    });
+    
   }
 
   function deleteNote(noteId) {
-    setNotes((prevNotes) => {
-      return prevNotes.filter((noteItem, index) => {
-        return index !== noteId;
-      });
-    });
+    // setNotes((prevNotes) => {
+    //   return prevNotes.filter((noteItem, index) => {
+    //     return index !== noteId;
+    //   });
+    // });
   }
 
-  function generateNote(note, index) {
+  function generateNote(note) {
     return (
       <Note
-        key={index}
-        id={index}
+        key={note.noteId}
+        id={note.noteId}
         title={note.title}
         content={note.content}
         onDelete={deleteNote}

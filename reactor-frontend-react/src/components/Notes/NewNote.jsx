@@ -1,18 +1,32 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import NoteContext from "../../context/NoteContext";
+import { UserNote } from "../../models/UserNote.ts";
+import { User } from "../../models/User.ts";
+import { NoteStatus } from "../../models/NoteStatus.ts";
 
 function NewNote(props) {
+
+  const { addNote } = useContext(NoteContext)
+
   const [noteData, setNoteData] = useState({
     noteTitle: "",
     noteContent: "",
   });
 
   function addNoteClicked(event) {
+    // event.preventDefault();
+    // props.onAdd(noteData);
+    // setNoteData({
+    //   noteTitle: "",
+    //   noteContent: ""
+    // });
     event.preventDefault();
-    props.onAdd(noteData);
-    setNoteData({
-      noteTitle: "",
-      noteContent: ""
-    });
+    const thisUser = new User(1);
+    const noteStatus = new NoteStatus();
+    const newNote = new UserNote(noteData.noteTitle, noteData.noteContent, thisUser);
+
+    addNote(newNote);
+    console.log(newNote);
   }
 
   function handleChange(event) {

@@ -1,4 +1,4 @@
 export class NoteStatus {
-    noteStatusId: number;
+    noteStatusId: number = 1;
     noteStatusName: string;
 }
