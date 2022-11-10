@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import NoteContext from "../../context/NoteContext";
 import { UserNote } from "../../models/UserNote.ts";
 import { User } from "../../models/User.ts";
-import { NoteStatus } from "../../models/NoteStatus.ts";
 
 function NewNote(props) {
 
@@ -22,7 +21,6 @@ function NewNote(props) {
     // });
     event.preventDefault();
     const thisUser = new User(1);
-    const noteStatus = new NoteStatus();
     const newNote = new UserNote(noteData.noteTitle, noteData.noteContent, thisUser);
 
     addNote(newNote);
