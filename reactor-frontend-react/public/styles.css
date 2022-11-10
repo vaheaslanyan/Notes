@@ -35,6 +35,20 @@
   footer p {
     color: #ccc;
   }
+
+  #spinnerDiv {
+    width: 100%;
+    display: flex;
+  }
+
+  #spinnerDiv div {
+    margin: 5rem auto;
+  }
+
+  #spinnerDiv div div{
+    margin: 0 1rem;
+  }
+
   .note {
     background: #fff;
     border-radius: 7px;

@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Spinner from './components/Spinner';
 import Notes from './components/notes/Notes';
-import { NoteProvider } from './components/context/NoteContext';
+import { NoteProvider } from './context/NoteContext';
 
 // BACKEND NOT COMPLETED OR CONNECTED
 
