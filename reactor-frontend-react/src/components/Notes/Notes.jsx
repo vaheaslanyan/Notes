@@ -5,13 +5,13 @@ import NoteContext from "../context/NoteContext";
 
 function Notes() {
 
-  const { note, isLoading } = useContext(NoteContext);
+  const { notesData, isLoading } = useContext(NoteContext);
 
-  const [notes, setNotes] = useState(note);
+  const [ notes, setNotes ] = useState(notesData);
 
   function addNewNote(newNote) {
     setNotes((prevNotes) => {
-      return [...notes, newNote];
+      return [...notesData, newNote];
     });
   }
 
@@ -30,7 +30,7 @@ function Notes() {
   return (
     <div>
       <NewNote onAdd={addNewNote}/>
-      {notes.map(generateNote)}
+      {notesData.map(generateNote)}
     </div>
   );
 }
