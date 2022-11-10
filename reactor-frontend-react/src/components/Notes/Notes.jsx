@@ -5,13 +5,12 @@ import NoteContext from "../../context/NoteContext";
 import Spinner from "../Spinner";
 
 function Notes() {
-
   const { notesData, isLoading } = useContext(NoteContext);
 
-  const [ notes, setNotes ] = useState(notesData);
+  // const [ notes, setNotes ] = useState(notesData);
 
   if (!isLoading && (!notesData || notesData.length === 0)) {
-    return <p>You don't have any notes yet.</p>
+    return <p>You don't have any notes yet.</p>;
   }
 
   function addNewNote(newNote) {
@@ -21,21 +20,29 @@ function Notes() {
   }
 
   function deleteNote(noteId) {
-    setNotes(prevNotes => {
+    setNotes((prevNotes) => {
       return prevNotes.filter((noteItem, index) => {
         return index !== noteId;
-      })
-    })
+      });
+    });
   }
 
   function generateNote(note, index) {
-    return <Note key={index} id={index} title={note.title} content={note.content} onDelete={deleteNote}/>; // key property should be replaced by a unique id instead of index
+    return (
+      <Note
+        key={index}
+        id={index}
+        title={note.title}
+        content={note.content}
+        onDelete={deleteNote}
+      />
+    ); // key property should be replaced by a unique id instead of index
   }
 
-  return isLoading ? <Spinner /> : (
+  return (
     <div>
-       <NewNote onAdd={addNewNote}/>
-       {notesData.map(generateNote)}
+      <NewNote onAdd={addNewNote} />
+      {isLoading ? <Spinner /> : notesData.map(generateNote)}
     </div>
   );
 }
