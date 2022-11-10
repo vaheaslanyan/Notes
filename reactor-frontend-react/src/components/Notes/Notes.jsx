@@ -24,7 +24,7 @@ function Notes() {
   }
 
   function generateNote(note, index) {
-    return <Note key={index} id={index} noteHeader={note.noteTitle} noteContent={note.noteContent} onDelete={deleteNote}/>; // key property should be replaced by a unique id instead of index
+    return <Note key={index} id={index} title={note.title} content={note.content} onDelete={deleteNote}/>; // key property should be replaced by a unique id instead of index
   }
 
   return (

@@ -18,8 +18,8 @@ function Note(props) {
 
   return (
     <div className="note">
-      <h1>{props.noteHeader}</h1>
-      <p>{props.noteContent}</p>
+      <h1>{props.title}</h1>
+      <p>{props.content}</p>
       <button className={buttonClass} onClick={handleCompleteClicked} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Complete</button>
     </div>
   );
