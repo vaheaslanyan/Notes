@@ -5,7 +5,7 @@ import NoteContext from "../context/NoteContext";
 
 function Notes() {
 
-  const { note } = useContext(NoteContext);
+  const { note, isLoading } = useContext(NoteContext);
 
   const [notes, setNotes] = useState(note);
 

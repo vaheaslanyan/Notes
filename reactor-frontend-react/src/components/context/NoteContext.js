@@ -5,10 +5,10 @@ const NoteContext = createContext();
 
 export const NoteProvider = ({children}) => {
 
-    const localURL = "http://localhost:8080/"
-    const [notes, setNotes] = useState([])
+    const localURL = "http://localhost:8080/";
 
-
+    const [isLoading, setIsLoading] = useState(true);
+    const [notes, setNotes] = useState([]);
 
     useEffect(() => {
         fetchNotes();
@@ -18,12 +18,14 @@ export const NoteProvider = ({children}) => {
     const fetchNotes = async () => {
         const response = await fetch(localURL + 'note/' + '1')
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setNotes(data);
+        setIsLoading(false);
     }
 
     return <NoteContext.Provider value={{
-        note: notes
+        note: notes,
+        isLoading
     }}>
         {children}
     </NoteContext.Provider>

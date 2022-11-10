@@ -9,11 +9,9 @@ import { NoteProvider } from './components/context/NoteContext';
 function App() {
     return (
         <NoteProvider>
-            <div>
                 <Header />
                 <Notes />
                 <Footer />
-            </div>
         </NoteProvider>
     )
 }
