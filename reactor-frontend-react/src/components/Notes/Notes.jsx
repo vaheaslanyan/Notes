@@ -9,10 +9,6 @@ function Notes() {
 
   // const [ notes, setNotes ] = useState(notesData);
 
-  if (!isLoading && (!notesData || notesData.length === 0)) {
-    return <p>You don't have any notes yet.</p>;
-  }
-
   function addNewNote(newNote) {
     
   }
@@ -37,10 +33,21 @@ function Notes() {
     ); // key property should be replaced by a unique id instead of index
   }
 
+  function loadNotes() {
+    if (isLoading) {
+      return <Spinner />
+    } else if (!isLoading && (!notesData || notesData.length === 0)) {
+      return <p>You don't have any notes yet.</p>;
+    } else {
+      return notesData.map(generateNote);
+    }
+  }
+
   return (
     <div>
       <NewNote onAdd={addNewNote} />
-      {isLoading ? <Spinner /> : notesData.map(generateNote)}
+      {/* {isLoading ? <Spinner /> : notesData.map(generateNote)} */}
+      {loadNotes()}
     </div>
   );
 }

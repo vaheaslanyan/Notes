@@ -3,6 +3,7 @@ package com.urartusoftware.reactor.services;
 import com.urartusoftware.reactor.daos.NoteDAO;
 import com.urartusoftware.reactor.daos.NoteStatusDAO;
 import com.urartusoftware.reactor.daos.UserDAO;
+import com.urartusoftware.reactor.models.Note;
 import com.urartusoftware.reactor.repositories.NoteRepository;
 import com.urartusoftware.reactor.repositories.NoteStatusRepository;
 import com.urartusoftware.reactor.repositories.UserRepository;
@@ -48,4 +49,14 @@ public class NoteService {
         return savedNoteOptional;
     }
 
+    public Optional<NoteDAO> deleteNoteById(int noteId) {
+        Optional<NoteDAO> noteToBeDeletedOptional = noteRepo.deleteById(noteId);
+
+        if (!noteToBeDeletedOptional.isPresent()) {
+            return Optional.empty();
+        }
+
+        Optional<NoteDAO> deletedNoteOptional = noteRepo.deleteById(noteId);
+        return deletedNoteOptional;
+    }
 }

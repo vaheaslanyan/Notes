@@ -50,4 +50,15 @@ public class NoteController {
         return ResponseEntity.ok(savedNote);
     }
 
+    @DeleteMapping
+    public ResponseEntity<Note> deleteNote(@RequestBody int noteId) {
+        Optional<NoteDAO> deletedNoteOptional = noteService.deleteNoteById(noteId);
+
+        if (!deletedNoteOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Note deletedNote = new Note(deletedNoteOptional.get());
+        return ResponseEntity.ok(deletedNote);
+    }
 }

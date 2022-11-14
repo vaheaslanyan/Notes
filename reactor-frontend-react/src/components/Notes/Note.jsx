@@ -17,7 +17,7 @@ function Note(props) {
 
   function handleDeleteClicked() {
     // props.onDelete(props.id);
-    deleteNote("1");
+    deleteNote(props.id);
     console.log("CLICKED");
   }
 

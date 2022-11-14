@@ -14,4 +14,5 @@ public interface NoteRepository extends JpaRepository<NoteDAO, Integer> {
 
     public Optional<List<NoteDAO>> findByUserId(UserDAO userId);
     public Optional<List<NoteDAO>> findByUserIdOrderByTimestampDesc(UserDAO userId);
+    public Optional<NoteDAO> deleteById(int noteId);
 }

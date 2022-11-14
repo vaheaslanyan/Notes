@@ -36,10 +36,21 @@ export const NoteProvider = ({ children }) => {
   };
 
   // Deleting a note
-  const deleteNote = (noteId) => {
-    // if (window.confirm('Are you sure you want to delete this note?')) {
-    // }
-    console.log(noteId)
+  const deleteNote = async (noteId) => {
+
+    console.log(noteId);
+
+    const response = await fetch(localURL + "note", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(noteId),
+    });
+
+    const data = await response.json();
+    // setNotesData([data, ...notesData]);
+    console.log(data)
   }
 
 
