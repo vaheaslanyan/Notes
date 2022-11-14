@@ -17,12 +17,9 @@ function Note(props) {
   }
 
   function handleDeleteClicked() {
-    // props.onDelete(props.id);
     const noteToBeDeleted = new UserNote();
     noteToBeDeleted.noteId = props.id;
-
     deleteNote(noteToBeDeleted);
-    console.log("CLICKED");
   }
 
   return (
