@@ -49,7 +49,13 @@ export const NoteProvider = ({ children }) => {
     });
 
     const data = await response.json();
-    // setNotesData([data, ...notesData]);
+    
+    setNotesData((prevNotes) => {
+      return prevNotes.filter((noteItem, index) => {
+        return index !== noteId;
+      });
+    });
+
     console.log(data)
   }
 

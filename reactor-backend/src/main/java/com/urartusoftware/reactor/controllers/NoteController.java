@@ -51,14 +51,16 @@ public class NoteController {
     }
 
     @DeleteMapping
-    public ResponseEntity<Note> deleteNote(@RequestBody int noteId) {
-        Optional<NoteDAO> deletedNoteOptional = noteService.deleteNoteById(noteId);
+    public ResponseEntity<Note> deleteNote(@RequestBody NoteDAO note) {
+        Optional<NoteDAO> noteToBeDeletedOptional = noteService.getById(note.getNoteId());
 
-        if (!deletedNoteOptional.isPresent()) {
+        if (!noteToBeDeletedOptional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
 
-        Note deletedNote = new Note(deletedNoteOptional.get());
-        return ResponseEntity.ok(deletedNote);
+        NoteDAO noteToBeDeleted = noteToBeDeletedOptional.get();
+        noteService.deleteNote(noteToBeDeleted);
+
+        return ResponseEntity.ok(new Note(noteToBeDeleted));
     }
 }

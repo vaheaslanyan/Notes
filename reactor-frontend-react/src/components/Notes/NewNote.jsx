@@ -15,15 +15,18 @@ function NewNote(props) {
   function addNoteClicked(event) {
     // event.preventDefault();
     // props.onAdd(noteData);
-    // setNoteData({
-    //   noteTitle: "",
-    //   noteContent: ""
-    // });
+    
     event.preventDefault();
     const thisUser = new User(1);
     const newNote = new UserNote(noteData.noteTitle, noteData.noteContent, thisUser);
 
     addNote(newNote);
+
+    setNoteData({
+      noteTitle: "",
+      noteContent: ""
+    });
+
     console.log(newNote);
   }
 

@@ -9,16 +9,9 @@ function Notes() {
 
   // const [ notes, setNotes ] = useState(notesData);
 
-  function addNewNote(newNote) {
-    
-  }
+  function addNewNote(newNote) {}
 
   function deleteNote(noteId) {
-    // setNotes((prevNotes) => {
-    //   return prevNotes.filter((noteItem, index) => {
-    //     return index !== noteId;
-    //   });
-    // });
   }
 
   function generateNote(note) {
@@ -35,7 +28,7 @@ function Notes() {
 
   function loadNotes() {
     if (isLoading) {
-      return <Spinner />
+      return <Spinner />;
     } else if (!isLoading && (!notesData || notesData.length === 0)) {
       return <p>You don't have any notes yet.</p>;
     } else {

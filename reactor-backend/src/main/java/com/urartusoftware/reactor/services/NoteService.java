@@ -26,6 +26,10 @@ public class NoteService {
         this.userRepo = userRepo;
     }
 
+    public Optional<NoteDAO> getById(int noteId) {
+        return noteRepo.findById(noteId);
+    }
+
     public Optional<List<NoteDAO>> getByUserId(int userId) {
 //        return noteRepo.findByUserIdOrderByTimestampDesc(userId);
         UserDAO userForNotes = new UserDAO(userId);
@@ -49,14 +53,7 @@ public class NoteService {
         return savedNoteOptional;
     }
 
-    public Optional<NoteDAO> deleteNoteById(int noteId) {
-        Optional<NoteDAO> noteToBeDeletedOptional = noteRepo.deleteById(noteId);
-
-        if (!noteToBeDeletedOptional.isPresent()) {
-            return Optional.empty();
-        }
-
-        Optional<NoteDAO> deletedNoteOptional = noteRepo.deleteById(noteId);
-        return deletedNoteOptional;
+    public void deleteNote(NoteDAO note) {
+        noteRepo.delete(note);
     }
 }
