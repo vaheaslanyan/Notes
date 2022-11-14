@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import NoteContext from "../../context/NoteContext";
 
 function Note(props) {
+
+  const { deleteNote } = useContext(NoteContext);
 
   const [buttonClass, setButtonClass] = useState("button-idle");
 
@@ -12,15 +15,20 @@ function Note(props) {
     setButtonClass("button-idle");
   }
 
-  function handleCompleteClicked() {
-    props.onDelete(props.id);
+  function handleDeleteClicked() {
+    // props.onDelete(props.id);
+    deleteNote("1");
+    console.log("CLICKED");
   }
 
   return (
     <div className="note">
       <h1>{props.title}</h1>
       <p>{props.content}</p>
-      <button className={buttonClass} onClick={handleCompleteClicked} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Complete</button>
+      {/* <button className={buttonClass} onClick={handleCompleteClicked} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Complete</button> */}
+      <div className="delete-button-div">
+        <i className="bi bi-x-circle" onClick={handleDeleteClicked}></i>
+      </div>
     </div>
   );
 }

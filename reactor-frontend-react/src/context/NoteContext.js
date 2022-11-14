@@ -38,8 +38,8 @@ export const NoteProvider = ({ children }) => {
   // Deleting a note
   const deleteNote = (noteId) => {
     // if (window.confirm('Are you sure you want to delete this note?')) {
-    //     setNotesData(notesData.filter((note) => note.id !== id));
     // }
+    console.log(noteId)
   }
 
 

@@ -13,6 +13,6 @@ export class UserNote {
         this.title = title;
         this.content = content;
         this.userId = userId;
-        this.noteStatusId = noteStatusId
+        this.noteStatusId = noteStatusId;
     }
 }
