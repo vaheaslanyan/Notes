@@ -36,23 +36,23 @@ export const NoteProvider = ({ children }) => {
   };
 
   // Deleting a note
-  const deleteNote = async (noteId) => {
+  const deleteNote = async (noteToBeDeleted) => {
 
-    console.log(noteId);
+    console.log(noteToBeDeleted);
 
     const response = await fetch(localURL + "note", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(noteId),
+      body: JSON.stringify(noteToBeDeleted)
     });
 
     const data = await response.json();
     
     setNotesData((prevNotes) => {
       return prevNotes.filter((noteItem, index) => {
-        return index !== noteId;
+        return noteItem.noteId !== noteToBeDeleted.noteId;
       });
     });
 

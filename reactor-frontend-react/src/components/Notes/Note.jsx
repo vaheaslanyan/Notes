@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useSyncExternalStore } from "react";
 import NoteContext from "../../context/NoteContext";
+import { UserNote } from "../../models/UserNote";
 
 function Note(props) {
 
@@ -17,7 +18,10 @@ function Note(props) {
 
   function handleDeleteClicked() {
     // props.onDelete(props.id);
-    deleteNote(props.id);
+    const noteToBeDeleted = new UserNote();
+    noteToBeDeleted.noteId = props.id;
+
+    deleteNote(noteToBeDeleted);
     console.log("CLICKED");
   }
 
